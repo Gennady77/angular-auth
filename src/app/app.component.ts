@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -12,12 +12,7 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   public onInfoClick() {
-    this.http.get('http://localhost:8080/getInfo', {
-      responseType: 'text',
-      headers: new HttpHeaders({
-        Authorization: '12345'
-      })
-    }).subscribe({
+    this.http.get('http://localhost:8080/getInfo', {responseType: 'text'}).subscribe({
       next: response => {
         this.infoContent = response;
       },

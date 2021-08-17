@@ -13,6 +13,7 @@ app.use(cors({
 }));
 
 app.get('/getInfo', (req, resp) => {
+  console.log('=================', req.headers.authorization);
   if (req.headers.authorization) {
     resp.send('there is some secure information');
     return;
