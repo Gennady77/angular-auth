@@ -8,10 +8,17 @@ const app: Express = express();
 
 const httpServer = createServer(app);
 
-app.use(cors());
+app.use(cors({
+  credentials: true
+}));
 
 app.get('/getInfo', (req, resp) => {
-  resp.send('there is some secure information');
+  if (req.headers.authorization) {
+    resp.send('there is some secure information');
+    return;
+  }
+
+  resp.status(403).send('A token is required for authentication.');
 });
 
 httpServer.listen(port, () => {

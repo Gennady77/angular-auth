@@ -12,8 +12,13 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   public onInfoClick() {
-    this.http.get('http://localhost:8080/getInfo', {responseType: 'text'}).subscribe(response => {
-      this.infoContent = response;
+    this.http.get('http://localhost:8080/getInfo', {responseType: 'text'}).subscribe({
+      next: response => {
+        this.infoContent = response;
+      },
+      error: err => {
+        alert(err.error);
+      }
     });
   }
 }
