@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient, HttpContext} from "@angular/common/http";
 import {UserModel} from "./core/models/user.model";
 import {AUTH_TOKEN} from "./core/models/auth.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
